@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import './styles.css';
-import {getAuth, signInWithEmailAndPassword} from 'firebase/auth';
-import {useNavigate} from 'react-router-dom';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
-
+import { Container, fabClasses, Grid, Box, Avatar } from "@mui/material";
 const Login = () => {
 
     const [email, setEmail] = useState('');
@@ -26,6 +26,7 @@ const Login = () => {
     }
 
     return (
+        /*
         <div className="container">
             <h1 style={{textAlign: 'center'}}>Login</h1>
             <div className="form-field">
@@ -41,6 +42,34 @@ const Login = () => {
                 <Link to={"/register"}>Register</Link>
             </div>
         </div>
+        */
+
+        <Container maxWidth='sm'>
+            <Box
+                sx={{
+                    marginTop: 8,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                }}
+            >
+                <Avatar alt="OSUT" src="/cometa.png" sx={{ width: 48, height: 48 }} />
+                <Grid container spacing={3}>
+                    <Grid item xs={12}>
+                        <TextField fullWidth id="standard-basic" label="Email" type={"email"} variant="standard" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <TextField fullWidth id="standard-basic" label="Password" type={"password"} variant="standard" value={password} onChange={(e) => setPassword(e.target.value)} />
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Button fullWidth className="login-button" variant="contained" onClick={handleLogin}>Login</Button>
+                    </Grid>
+                    <Grid item xs={12}>
+                        <Link fullWidth to={"/register"}>Register</Link>
+                    </Grid>
+                </Grid>
+            </Box>
+        </Container>
     )
 }
 
